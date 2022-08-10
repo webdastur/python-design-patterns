@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Union
+from typing import Union, Optional
 
 
 class Shape(ABC):
@@ -38,22 +38,22 @@ class ShapeFactory:
 
 
 if __name__ == "__main__":
-    shape_factory = ShapeFactory()
+    shape_factory: ShapeFactory = ShapeFactory()
 
     # get an object of Circle and call its draw method.
-    shape1 = shape_factory.get_shape("CIRCLE")
+    shape1: Optional[Circle] = shape_factory.get_shape("CIRCLE")
 
     # call draw method of Circle
     shape1.draw()
 
     # get an object of Rectangle and call its draw method.
-    shape2 = shape_factory.get_shape("RECTANGLE")
+    shape2: Optional[Rectangle] = shape_factory.get_shape("RECTANGLE")
 
     # call draw method of Rectangle
     shape2.draw()
 
     # get an object of Square and call its draw method.
-    shape3 = shape_factory.get_shape("SQUARE")
+    shape3: Optional[Square] = shape_factory.get_shape("SQUARE")
 
     # call draw method of Square
     shape3.draw()
