@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Union
+from typing import Union, TypeVar, Optional
+
+T = TypeVar('T', bound='AbstractFactory')
 
 
 class Shape(ABC):
@@ -58,7 +60,7 @@ class RoundedShapeFactory(AbstractFactory):
 
 class FactoryProducer:
     @staticmethod
-    def get_factory(rounded: bool) -> AbstractFactory:
+    def get_factory(rounded: bool) -> T:
         if rounded:
             return RoundedShapeFactory()
         return ShapeFactory()
@@ -66,31 +68,31 @@ class FactoryProducer:
 
 if __name__ == "__main__":
     # get shape factory
-    shape_factory = FactoryProducer.get_factory(False)
+    shape_factory: ShapeFactory = FactoryProducer.get_factory(False)
 
     # get an object of Shape Rectangle
-    shape1 = shape_factory.get_shape("RECTANGLE")
+    shape1: Optional[Rectangle] = shape_factory.get_shape("RECTANGLE")
 
     # call draw method of Shape Rectangle
     shape1.draw()
 
     # get an object of Shape Square
-    shape2 = shape_factory.get_shape("SQUARE")
+    shape2: Optional[Square] = shape_factory.get_shape("SQUARE")
 
     # call draw method of Shape Square
     shape2.draw()
 
     # get shape factory
-    shape_factory1 = FactoryProducer.get_factory(True)
+    shape_factory1: RoundedShapeFactory = FactoryProducer.get_factory(True)
 
     # get an object of Shape Rectangle
-    shape3 = shape_factory1.get_shape("RECTANGLE")
+    shape3: Optional[RoundedRectangle] = shape_factory1.get_shape("RECTANGLE")
 
     # call draw method of Shape Rectangle
     shape3.draw()
 
     # get an object of Shape Square
-    shape4 = shape_factory1.get_shape("SQUARE")
+    shape4: Optional[RoundedSquare] = shape_factory1.get_shape("SQUARE")
 
     # call draw method of Shape Square
     shape4.draw()
