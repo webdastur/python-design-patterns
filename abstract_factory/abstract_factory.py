@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Union, TypeVar, Optional
 
-T = TypeVar('T', bound='AbstractFactory')
+T = TypeVar("T", bound="AbstractFactory")
 
 
 class Shape(ABC):
