@@ -73,7 +73,7 @@ class ShapeCache:
         ShapeCache.shape_map[rectangle.get_id()] = rectangle
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ShapeCache.load_cache()
 
     cloned_shape: Shape = ShapeCache.get_shape("1")
